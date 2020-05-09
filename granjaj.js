@@ -1,6 +1,8 @@
 var g=document.getElementById('granja');
 var lienzo=g.getContext('2d');
 console.log(lienzo);
+var a=aleatorio(1,5);
+console.log(a);
 
 var fondo=
 {
@@ -79,6 +81,11 @@ function dibujar()
   {
     lienzo.drawImage(vaca.imagen,200,200);
   }
+}
 
-
+function aleatorio(min,max)
+{
+  var resultado;
+  resultado=Math.floor(Math.random()*(max-min+1))+min;
+  return resultado;
 }
