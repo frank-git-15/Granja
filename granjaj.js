@@ -12,7 +12,9 @@ var fondo=
 var cerdo=
 {
   url:"cerdo.png",
-  carga:false
+  carga:false,
+  x:0,
+  y:0
 }
 var pollo=
 {
@@ -24,7 +26,8 @@ var vaca=
   url:"vaca.png",
   carga:false
 }
-
+cerdo.x=(aleatorio(0,7))*60;
+cerdo.y=(aleatorio(0,7))*60;
 //Aqui se genera un variable tipo Image y se guarda logicamente en el vector JSON
 //y con esto podemos ubicar la imagen de fondo invocando fondo.imagen
 fondo.imagen=new Image();
@@ -71,16 +74,9 @@ function dibujar()
   }
   if(cerdo.carga)
   {
-    console.log("Cerdos "+cerdosC);
-    for(var i=0;i<cerdosC;i++)
-    {
-      var x=aleatorio(0,7);
-      var y=aleatorio(0,7);
-      x=x*60;
-      y=y*60;
-      lienzo.drawImage(cerdo.imagen,x,y);
-    }
-
+    console.log("Cerdo x"+cerdo.x);
+    console.log("Cerdo y"+cerdo.y);
+    lienzo.drawImage(cerdo.imagen,cerdo.x,cerdo.y);
   }
   if(pollo.carga)
   {
