@@ -56,6 +56,11 @@ pollo.imagen=new Image();
 pollo.imagen.src=pollo.url;
 pollo.imagen.addEventListener('load',cargarPollo);
 
+//Vectores tipo JSON para guardar todas la posciones de los demas animales
+// y que cuando se mueva el marranito los otros animales mantengan su posicion
+var posicion_pollos=[],posicion_vacas=[];
+
+
 function cargarFondo()
 {
     fondo.carga=true;
@@ -97,6 +102,7 @@ function dibujar()
       var y=aleatorio(0,6);
       x=x*71;
       y=y*71;
+      posicion_pollos[i]={x:x,y:y};//Aqui se gurda cada posicion de cada pollo
       lienzo.drawImage(pollo.imagen,x,y);
     }
   }
@@ -109,6 +115,8 @@ function dibujar()
       var y=aleatorio(0,6);
       x=x*71;
       y=y*71;
+      posicion_vacas[i]={x:x,y:y};//Aqui se gurda cada posicion de cada vaca
+      console.log(posicion_vacas);
       lienzo.drawImage(vaca.imagen,x,y);
     }
   }
@@ -117,22 +125,22 @@ function moverCerdo(e) {
   switch (e.keyCode) {
     case teclas.UP:
       console.log("UP");
-      moviemientoCerdo(0,(pixeles*(-1)));
+      moviemientoCerdo(0,(pixeles*(-1)));//Para mover hacia arriba el marranito se le resta Y una cantidad de pixeles determiada
       break;
     case teclas.DOWN:
       console.log("DOWN");
-      moviemientoCerdo(0,pixeles);
+      moviemientoCerdo(0,pixeles);//Se le suma a Y los pixeles que desee para mover hacia abajo
       break;
     case teclas.LEFT:
       console.log("LEFT");
       //pixeles*=(-1);
       //console.log("Pixeles left: "+pixeles);
       //moviemientoCerdo(-20,0);
-      moviemientoCerdo((pixeles*(-1)),0);
+      moviemientoCerdo((pixeles*(-1)),0);//Se le resta a X para mover el cochino hacia la izquierda
       break;
     case teclas.RIGHT:
       console.log("RIGHT");
-      moviemientoCerdo(pixeles,0);
+      moviemientoCerdo(pixeles,0);//Se le suma a X para moverlo hacia la derecha
       break;
     default:
       console.log(e.key);
@@ -140,7 +148,7 @@ function moverCerdo(e) {
 
   }
 }
-function moviemientoCerdo(x,y) {
+function moviemientoCerdo(x,y) {//esta fucion es la necargada se mover el cochino pero manteniendo la poscion de las demas imagenes
   if(fondo.carga)
   {
     lienzo.drawImage(fondo.imagen,0,0);
@@ -156,10 +164,9 @@ function moviemientoCerdo(x,y) {
     console.log("Pollos "+pollosC);
     for(var i=0;i<pollosC;i++)
     {
-      var x=aleatorio(0,6);
-      var y=aleatorio(0,6);
-      x=x*71;
-      y=y*71;
+      //Se almancena las coordenadas actuales en X y Y del pollo y asi no volver a generar nuevas coordenadas
+      x=posicion_pollos[i].x;
+      y=posicion_pollos[i].y;
       lienzo.drawImage(pollo.imagen,x,y);
     }
   }
@@ -168,10 +175,8 @@ function moviemientoCerdo(x,y) {
     console.log("Vacas "+vacasC);
     for(var i=0;i<vacasC;i++)
     {
-      var x=aleatorio(0,6);
-      var y=aleatorio(0,6);
-      x=x*71;
-      y=y*71;
+      x=posicion_vacas[i].x;
+      y=posicion_vacas[i].y;
       lienzo.drawImage(vaca.imagen,x,y);
     }
   }
