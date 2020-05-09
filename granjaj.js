@@ -1,5 +1,6 @@
 var g=document.getElementById('granja');
 var lienzo=g.getContext('2d');
+document.addEventListener("keydown",e);
 console.log(lienzo);
 var vacasC=aleatorio(1,5);//Enesta linea se genera cuantas vacas se vana dibujar
 var pollosC=aleatorio(1,5);//Enesta linea se genera cuantos pollos se vana dibujar
@@ -102,6 +103,9 @@ function dibujar()
       lienzo.drawImage(vaca.imagen,x,y);
     }
   }
+}
+function e(event) {
+  console.log(event);
 }
 
 function aleatorio(min,max)
