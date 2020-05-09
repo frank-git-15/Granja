@@ -5,6 +5,8 @@ console.log(lienzo);
 var vacasC=aleatorio(1,5);//Enesta linea se genera cuantas vacas se vana dibujar
 var pollosC=aleatorio(1,5);//Enesta linea se genera cuantos pollos se vana dibujar
 var cerdosC=aleatorio(1,5);//Enesta linea se genera cuantos cerdos se vana dibujar
+
+var pixeles=10; //Esta variable especifica de a cuantos pixeles se movera el cerdo
 var fondo=
 {
   url:"granja.png",
@@ -115,20 +117,63 @@ function moverCerdo(e) {
   switch (e.keyCode) {
     case teclas.UP:
       console.log("UP");
+      moviemientoCerdo(0,(pixeles*(-1)));
       break;
     case teclas.DOWN:
       console.log("DOWN");
+      moviemientoCerdo(0,pixeles);
       break;
     case teclas.LEFT:
       console.log("LEFT");
+      //pixeles*=(-1);
+      //console.log("Pixeles left: "+pixeles);
+      //moviemientoCerdo(-20,0);
+      moviemientoCerdo((pixeles*(-1)),0);
       break;
     case teclas.RIGHT:
       console.log("RIGHT");
+      moviemientoCerdo(pixeles,0);
       break;
     default:
       console.log(e.key);
       break;
 
+  }
+}
+function moviemientoCerdo(x,y) {
+  if(fondo.carga)
+  {
+    lienzo.drawImage(fondo.imagen,0,0);
+  }
+  if(cerdo.carga)
+  {
+    cerdo.x+=x;
+    cerdo.y+=y;
+    lienzo.drawImage(cerdo.imagen,cerdo.x,cerdo.y);
+  }
+  if(pollo.carga)
+  {
+    console.log("Pollos "+pollosC);
+    for(var i=0;i<pollosC;i++)
+    {
+      var x=aleatorio(0,6);
+      var y=aleatorio(0,6);
+      x=x*71;
+      y=y*71;
+      lienzo.drawImage(pollo.imagen,x,y);
+    }
+  }
+  if(vaca.carga)
+  {
+    console.log("Vacas "+vacasC);
+    for(var i=0;i<vacasC;i++)
+    {
+      var x=aleatorio(0,6);
+      var y=aleatorio(0,6);
+      x=x*71;
+      y=y*71;
+      lienzo.drawImage(vaca.imagen,x,y);
+    }
   }
 }
 
