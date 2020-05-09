@@ -1,9 +1,9 @@
 var g=document.getElementById('granja');
 var lienzo=g.getContext('2d');
 console.log(lienzo);
-var a=aleatorio(1,5);
-console.log(a);
-
+var vacasC=aleatorio(1,5);//Enesta linea se genera cuantas vacas se vana dibujar
+var pollosC=aleatorio(1,5);//Enesta linea se genera cuantos pollos se vana dibujar
+var cerdosC=aleatorio(1,5);//Enesta linea se genera cuantos cerdos se vana dibujar
 var fondo=
 {
   url:"granja.png",
@@ -71,15 +71,40 @@ function dibujar()
   }
   if(cerdo.carga)
   {
-    lienzo.drawImage(cerdo.imagen,100,200);
+    console.log("Cerdos "+cerdosC);
+    for(var i=0;i<cerdosC;i++)
+    {
+      var x=aleatorio(0,7);
+      var y=aleatorio(0,7);
+      x=x*60;
+      y=y*60;
+      lienzo.drawImage(cerdo.imagen,x,y);
+    }
+
   }
   if(pollo.carga)
   {
-    lienzo.drawImage(pollo.imagen,150,200);
+    console.log("Pollos "+pollosC);
+    for(var i=0;i<cerdosC;i++)
+    {
+      var x=aleatorio(0,7);
+      var y=aleatorio(0,7);
+      x=x*60;
+      y=y*60;
+      lienzo.drawImage(pollo.imagen,x,y);
+    }
   }
   if(vaca.carga)
   {
-    lienzo.drawImage(vaca.imagen,200,200);
+    console.log("Vacas "+vacasC);
+    for(var i=0;i<cerdosC;i++)
+    {
+      var x=aleatorio(0,7);
+      var y=aleatorio(0,7);
+      x=x*60;
+      y=y*60;
+      lienzo.drawImage(vaca.imagen,x,y);
+    }
   }
 }
 
