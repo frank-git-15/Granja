@@ -9,24 +9,24 @@ var cerdosC=aleatorio(1,5);//Enesta linea se genera cuantos cerdos se vana dibuj
 var pixeles=10; //Esta variable especifica de a cuantos pixeles se movera el cerdo
 var fondo=
 {
-  url:"granja.png",
+  url:"https://i.imgur.com/aw3qz7q.png",
   carga:false
 }
 var cerdo=
 {
-  url:"cerdo.png",
+  url:"https://i.imgur.com/psrekpA.png",
   carga:false,
   x:0,
   y:0
 }
 var pollo=
 {
-  url:"pollo.png",
+  url:"https://i.imgur.com/nLnjY3i.png",
   carga:false
 }
 var vaca=
 {
-  url:"vaca.png",
+  url:"https://i.imgur.com/LZqxuuM.png",
   carga:false
 }
 var teclas=
